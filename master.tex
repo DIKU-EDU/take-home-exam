@@ -1,0 +1,47 @@
+\documentclass[a4paper]{article}
+\usepackage{fullpage} % Good use of white space, reduces number of pages -> less stressed students :-)
+\usepackage[fancy]{template}
+\usepackage{survival-pack}
+
+\usepackage{listings}             % Include the listings-package
+\usepackage{todonotes}            % Good for comments
+%\renewcommand{\todo}[1]{}  % Uncomment to remove todonotes
+
+\def\course{Fancy Course}
+\def\period{B1-2-2016}
+\def\responsible{Linus Torvalds \texttt{<torvalds@linuxfoundation.org>}}
+\def\mailinglist{\texttt{<fancycourse@dikumail.dk>}}
+
+\setup{%
+  subject={\textbf{Deadline}: December 24, 23:59},%
+  assignment={Take-Home Exam in \course{}},%
+  date={Version 1.0}%
+}
+\setupLocation[short=DIKU]{
+  Department of Computer Science%\\ University of Copenhagen%
+}
+
+\usepackage{remreset}
+\newcounter{question}
+\makeatletter\@addtoreset{question}{subsection}\makeatother
+
+\renewcommand{\thequestion}{\arabic{section}.\arabic{subsection}.\arabic{question}}
+\newcommand{\question}{~\\[0pt]\refstepcounter{question}\noindent\textbf{\underline{Question \thequestion:}} }
+
+\usepackage{framed}
+% Solutions use a modified proof environment
+\newenvironment{solution}{\framed \vspace{-5mm}\subsubsection*{Solution}}{\endframed}
+% Uncomment to remove solutions
+\renewenvironment{solution}{\comment}{\endcomment}
+
+\usepackage{enumitem}
+%\setenumerate[1]{label=\thesection.\arabic*.}
+%\setenumerate[2]{label*=\arabic*.}
+
+\begin{document}
+
+\maketitle
+
+\input{formalia}
+
+\end{document}
